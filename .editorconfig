@@ -1,0 +1,2 @@
+[**/*.{html,css,ts,js}]
+indent_size = 2

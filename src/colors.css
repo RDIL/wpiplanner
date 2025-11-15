@@ -1,0 +1,60 @@
+:root {
+  /* Brand Colors */
+  --color-wpi-red: #c41230;
+  --color-wpi-red-hover: #e62341;
+
+  /* Grayscale Colors */
+  --color-black: #000;
+  --color-white: #fff;
+  --color-gray-dark: #333;
+  --color-gray-medium: #666;
+  --color-gray-light: #999;
+  --color-gray-border: #ccc;
+  --color-gray-border-light: #ddd;
+  --color-gray-border-very-light: #e0e0e0;
+  --color-gray-bg-light: #f0f0f0;
+  --color-gray-bg-lighter: #f5f5f5;
+  --color-gray-bg-lightest: #f9f9f9;
+  --color-gray-hover: #e8e8e8;
+
+  /* Semantic Colors */
+  --color-success: #4caf50;
+  --color-error: #f44336;
+  --color-error-dark: #cc0000;
+  --color-error-bright: #ff4444;
+  --color-warning: #ff9800;
+  --color-info: #2196F3;
+
+  /* Course Palette Colors */
+  --color-course-blue: #2196F3;
+  --color-course-green: #4CAF50;
+  --color-course-orange: #FF9800;
+  --color-course-purple: #9C27B0;
+  --color-course-cyan: #00BCD4;
+  --color-course-deep-orange: #FF5722;
+  --color-course-brown: #795548;
+  --color-course-blue-grey: #607D8B;
+  --color-course-pink: #E91E63;
+
+  /* Term Status Colors */
+  --color-term-available-bg: #DFFFDF;
+  --color-term-available-border: #4CAF50;
+  --color-term-waitlist-bg: #ccccff;
+  --color-term-full-bg: #fce2b1;
+  --color-term-full-border: #f44336;
+  --color-term-not-offered-bg: #e0e0e0;
+  --color-term-not-offered-border: #ccc;
+
+  /* UI Element Colors */
+  --color-button-remove: #ff4444;
+  --color-button-remove-hover: #cc0000;
+  --color-favorite: #ffd700;
+  --color-course-list-even: #F3F7FB;
+  --color-course-list-hover: #E8F4F8;
+  --color-candidate-selected-bg: #e8f4f8;
+  --color-candidate-selected-border: #c41230;
+
+  /* RGBA Colors */
+  --color-shadow-black: rgba(0, 0, 0, 0.2);
+  --color-overlay-white: rgba(255, 255, 255, 0.9);
+}
