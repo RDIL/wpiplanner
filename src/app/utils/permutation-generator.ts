@@ -1,7 +1,6 @@
 import type {Section} from '../models/section';
 import type {Period} from '../models/period';
 import {DayOfWeek} from '../models/day-of-week';
-import type {SectionProducer} from '../controllers/student-schedule';
 
 export interface SchedulePermutation {
   sections: Section[];
@@ -56,36 +55,6 @@ export function generatePermutationsFromSelected(
   const limitReached = generateCombinations(sectionLists, 0, currentCombination, permutations, MAX_PERMUTATIONS);
 
   return {permutations, limitReached};
-}
-
-/**
- * Generates all valid schedule permutations from section producers.
- * Each permutation contains one section from each course.
- * Limited to MAX_PERMUTATIONS to prevent performance issues.
- */
-export function generatePermutations(producers: SectionProducer[]): SchedulePermutation[] {
-  const permutations: SchedulePermutation[] = [];
-
-  if (producers.length === 0) {
-    return permutations;
-  }
-
-  // Get sections for each producer
-  const sectionLists: Section[][] = [];
-  for (const producer of producers) {
-    const sections = producer.getSections();
-    if (sections.length === 0) {
-      // If a course has no available sections, return empty
-      return permutations;
-    }
-    sectionLists.push(sections);
-  }
-
-  // Generate all combinations using DFS, limited to MAX_PERMUTATIONS
-  const currentCombination: Section[] = [];
-  generateCombinations(sectionLists, 0, currentCombination, permutations, MAX_PERMUTATIONS);
-
-  return permutations;
 }
 
 function generateCombinations(
@@ -239,19 +208,4 @@ function hasTimeConflict(period1: Period, period2: Period): boolean {
  */
 export function getPermutationId(permutation: SchedulePermutation): string {
   return permutation.sections.map(s => s.number).join('/');
-}
-
-/**
- * Gets professor names for a permutation (all unique professors).
- */
-export function getPermutationProfessors(permutation: SchedulePermutation): string[] {
-  const professors = new Set<string>();
-  for (const section of permutation.sections) {
-    for (const period of section.periods) {
-      if (period.professor && period.professor.trim() && period.professor.trim() !== 'Not Assigned') {
-        professors.add(period.professor.trim());
-      }
-    }
-  }
-  return Array.from(professors).sort();
 }

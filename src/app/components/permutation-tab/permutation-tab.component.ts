@@ -3,8 +3,7 @@ import {CommonModule} from '@angular/common';
 import {StudentSchedule} from '../../controllers/student-schedule';
 import {
   generatePermutationsFromSelected,
-  type SchedulePermutation,
-  getPermutationProfessors
+  type SchedulePermutation
 } from '../../utils/permutation-generator';
 import type {Section} from '../../models/section';
 import type {Course} from '../../models/course';
@@ -90,7 +89,7 @@ interface CourseWithSections {
             class="candidate-item"
             [class.selected]="selectedPermutationIndex === i"
             [class.has-conflicts]="perm.conflicts.length > 0"
-            (click)="selectPermutation(i)"
+            (click)="permutation = i"
           >
             <div class="candidate-content">
               <div class="candidate-codes">
@@ -98,9 +97,6 @@ interface CourseWithSections {
                 <span class="conflict-indicator" *ngIf="perm.conflicts.length > 0" title="Has conflicts">
                   ⚠️
                 </span>
-              </div>
-              <div class="candidate-professor" *ngIf="getPermutationProfessors(perm).length > 0">
-                {{ getPermutationProfessors(perm)[0] }}
               </div>
             </div>
           </div>
@@ -317,7 +313,7 @@ export class PermutationTabComponent implements OnInit, OnDestroy {
     return this.permutations[this.selectedPermutationIndex] || null;
   }
 
-  selectPermutation(index: number): void {
+  set permutation(index: number) {
     this.selectedPermutationIndex = index;
   }
 
@@ -336,9 +332,5 @@ export class PermutationTabComponent implements OnInit, OnDestroy {
 
   getPermutationCodes(permutation: SchedulePermutation): string {
     return permutation.sections.map(s => s.number).join('/');
-  }
-
-  getPermutationProfessors(permutation: SchedulePermutation): string[] {
-    return getPermutationProfessors(permutation);
   }
 }
