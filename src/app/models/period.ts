@@ -25,6 +25,6 @@ export class Period {
   }
 
   get waitlistFilled(): boolean {
-    return this.actualWaitlist === this.maxWaitlist;
+    return this.actualWaitlist >= this.maxWaitlist;
   }
 }
