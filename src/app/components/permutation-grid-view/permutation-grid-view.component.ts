@@ -88,7 +88,7 @@ export class PermutationGridViewComponent {
   private courseColorMap = new Map<any, string>();
 
   constructor() {
-    for (let i = 8; i <= 17; i++) {
+    for (let i = 8; i <= 18; i++) {
       this.hours.push(i);
     }
   }
